@@ -1,7 +1,7 @@
 # OWP_Java_Inventory_Manager
-Tutorial under our series One Week Projects (OWP) which will focus on projects that can be made in approximately one week while still being useful. We will try to make a decent inventory management application in this tutorial. Users are expected to go through each commit and learn step by step from there. Hence a very basic understanding of git is inherent pre-requisite.  
+Tutorial under our series One Week Projects (OWP) which will focus on projects that can be made in approximately one week while still being useful. We will try to make a decent inventory management application in this tutorial. Users are expected to go through each commit and learn step by step from there. Hence a very basic understanding of git is inherent pre-requisite. But we have provided a guide for navigating this tutorial which takes care of this.  
   
-This is a Java tutorial which uses MySQL for database and Swing API for GUI. This is made with Eclipse Neon IDE. The target audience is expected to have a basic knowledge of Java to go through this tutorial.  
+This is a Java tutorial which uses MySQL for database and Swing API for GUI. This is made with Eclipse Neon IDE. The target audience is expected to have a basic knowledge of Java and SQL to go through this tutorial.  
 Java is a cross-platform language, and hence this tutorial can be followed on any OS be it windows or linux. The Swing API provides a nice and simple way to create GUI for java applications. Also, MySQL is widely used database server and also provides a simple Java connector API to connect to databases from Java. Hence this database is chosen.  
   
 ## Navigating this tutorial
