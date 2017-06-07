@@ -28,7 +28,8 @@ public class LoginPrompt extends JFrame implements ActionListener
 	/**
 	 * Create the frame in the constructor.
 	 */
-	public LoginPrompt() {
+	public LoginPrompt()
+	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);		// When the cross is clicked, exit application
 		// Set the top left corner of window on desktop and the width,height of the window
 		// (0,0) is the top left corner of desktop and bottom right corner (maxx, maxy) 
@@ -96,13 +97,13 @@ public class LoginPrompt extends JFrame implements ActionListener
 	
 	// We need to override the following function for implementing ActionListener
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0)
+	{
 		// Login Button Clicked. For now, we will just show messages
 		// Later on we will redirect the user to another window
 		if (DatabaseHelper.getConnection(txtUsername.getText(), txtPassword.getText()))
-			JOptionPane.showMessageDialog(null, "Login Successful! :)");
+			InventoryManager.loginSuccessful(this);
 		else
 			JOptionPane.showMessageDialog(null, "Login Failed! Check your credentials!!");
 	}
-
 }

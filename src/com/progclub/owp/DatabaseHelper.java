@@ -2,6 +2,7 @@ package com.progclub.owp;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,8 +23,12 @@ public class DatabaseHelper
 	public final static String COLUMN_QUANTITY = "QuantityAvailable";
 	public final static String[] COLUMN_NAMES = {COLUMN_ID, COLUMN_NAME, COLUMN_PRICE, COLUMN_QUANTITY};
 	
+	// A standard command to add rows into the table
+	private static final String ADD_QUERY = "INSERT INTO " + TABLE_NAME + " ( " + COLUMN_NAME + ", " +
+            								COLUMN_PRICE + ", " + COLUMN_QUANTITY + ") VALUES (?, ?, ?);";
+
 	private static Connection conn;		// Database connection
-	
+
 	public static boolean getConnection(String username, String password)
 	{
 		// Create a data source to connect to our MySQL database
@@ -103,6 +108,21 @@ public class DatabaseHelper
 		catch (SQLException e) {}
 	}
 	
+	public static void addEntry(String name, double price, int quantity)
+	{
+		String query = ADD_QUERY;
+		try
+		{
+			// A PreparedStatement helps us replace the '?' marks in the query with proper values
+			PreparedStatement prepStmt = conn.prepareStatement(query);
+			prepStmt.setString(1, name);			// replace 1st question mark with name
+			prepStmt.setDouble(2, price);			// replace 2nd question mark with price
+			prepStmt.setInt(3, quantity);			// replace 3rd question mark with quantity
+			prepStmt.executeUpdate();
+		}
+		catch (SQLException e) {}
+	}
+
 	public static void closeConnection()
 	{
 		try

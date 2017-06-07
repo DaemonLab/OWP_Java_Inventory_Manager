@@ -17,5 +17,17 @@ We will create the swing GUI using code, if you wish you can look at downloading
 For now, the login prompt only displays a message indicated success/failure of login. Later on it will be used to open another window for managing the inventory.  
 Many swing components and database functions are introduced in this step, take your time to go through the code and comments to understand them. Google is your friend for getting in-depth knowledge of all these components/functions. Happy Coding! :)  
 
-### Step 3
+### Step 3 -- HomePage and Adding entries into inventory
+We'll add 2 more classes `HomeWindow` and `AddItemsScreen` both will extend JFrame and implement ActionListener. We will create a static function in `InventoryManager` which will be called by `LoginPrompt` on succeful login. This function will close the LoginPrompt and open the HomeWindow.  
+HomeWindow will have 3 buttons to do different things. The `Add` button will open the `AddItemsScreen` which will allow adding items into the database table. A new function in `DatabaseHelper` is also created to take care of adding entries into the table. All this code should is either explained in comments or is simply derived from previous steps of this tutorial.  
+To see the entries added into the database login into mysql in command prompt using the inventory user's name and password, i.e.:  
+`mysql --user=inventoryuser --password=inventorypass`  
+Issue the following commands to select the database and display all the entries in the table:  
+```
+use inventorydb;
+select * from InventoryTable;
+```
+You will be able to see all the entries in the table which you can add on the `AddItemsScreen`. This was just to ensure our AddItemsScreen is working properly, in the next step we will allow viewing and editing the entries in our app itself.  
+
+### Step 4
 Coming Soon...
