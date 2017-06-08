@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -19,7 +18,7 @@ public class HomeWindow extends JFrame implements ActionListener
 	// Just some constants used and explained later
 	private static final String VIEW_ACTION_CMD = "VIEW_EDIT_ACTION";
 	private static final String ADD_ACTION_CMD = "ADD_ACTION";
-	private static final String PRINT_ACTION_CMD = "PRINT_ACTION";
+	private static final String WITHDRAW_ACTION_CMD = "WITHDRAW_ACTION";
 
 	/**
 	 * Create the Window.
@@ -55,14 +54,14 @@ public class HomeWindow extends JFrame implements ActionListener
 		gbc_btnPrint.anchor = GridBagConstraints.CENTER;
 		gbc_btnPrint.gridx = 1;
 		gbc_btnPrint.gridy = 3;
-		JButton btnPrint = new JButton("Print Receipt");
+		JButton btnPrint = new JButton("Withdraw Items");
 		contentPane.add(btnPrint, gbc_btnPrint);
 		
 		// Setting the action command will let us identify which button
 		// was pressed in out actionPerformed function
 		btnView.setActionCommand(VIEW_ACTION_CMD);
 		btnAdd.setActionCommand(ADD_ACTION_CMD);
-		btnPrint.setActionCommand(PRINT_ACTION_CMD);
+		btnPrint.setActionCommand(WITHDRAW_ACTION_CMD);
 		
 		// All of the buttons will call the same actionPerformed listener
 		btnView.addActionListener(this);
@@ -79,14 +78,16 @@ public class HomeWindow extends JFrame implements ActionListener
 		switch(actionCommand)
 		{
 		case VIEW_ACTION_CMD:
-			JOptionPane.showMessageDialog(null, "View Button was pressed!!");
+			ViewEditScreen viewScreen = new ViewEditScreen();
+			viewScreen.setVisible(true);
 			break;
 		case ADD_ACTION_CMD:
 			AddItemsScreen addScreen = new AddItemsScreen();
 			addScreen.setVisible(true);
 			break;
-		case PRINT_ACTION_CMD:
-			JOptionPane.showMessageDialog(null, "Print Button was pressed!!");
+		case WITHDRAW_ACTION_CMD:
+			WithdrawItemsScreen withdrawScreen = new WithdrawItemsScreen();
+			withdrawScreen.setVisible(true);
 			break;
 		}
 	}

@@ -26,6 +26,12 @@ public class DatabaseHelper
 	// A standard command to add rows into the table
 	private static final String ADD_QUERY = "INSERT INTO " + TABLE_NAME + " ( " + COLUMN_NAME + ", " +
             								COLUMN_PRICE + ", " + COLUMN_QUANTITY + ") VALUES (?, ?, ?);";
+	// Standard query to select all rows
+	private static final String SELECT_QUERY = "SELECT * FROM " + TABLE_NAME + ";";
+	// Standard query to update a row
+	private static final String UPDATE_QUERY = "UPDATE " + TABLE_NAME
+								+ " SET " + COLUMN_NAME + " = ?, " + COLUMN_PRICE + " = ?, " + COLUMN_QUANTITY + " = ?"
+								+ " WHERE " + COLUMN_ID + " = ?;";
 
 	private static Connection conn;		// Database connection
 
@@ -61,7 +67,6 @@ public class DatabaseHelper
 			// Execute the query and get the result. We need a Statement from the connection to do so.
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			stmt.close();
 			return rs;
 		}
 		catch (SQLException e)
@@ -101,7 +106,7 @@ public class DatabaseHelper
 							COLUMN_NAME + " VARCHAR(255) NOT NULL, " +
 						  	COLUMN_PRICE + " DOUBLE, " +
 							COLUMN_QUANTITY + " INTEGER, " +
-							"PRIMARY KEY(ID) );";
+							"PRIMARY KEY(" + COLUMN_ID + ") );";
 			executeQuery(query);
 					
 		}
@@ -123,6 +128,29 @@ public class DatabaseHelper
 		catch (SQLException e) {}
 	}
 
+	public static ResultSet getAllEntries()
+	{
+		String query = SELECT_QUERY;
+		return getResult(query);
+	}
+
+	public static void updateEntry(int id, String name, double price, int quantity)
+	{
+		String query = UPDATE_QUERY;
+		try
+		{
+			// A PreparedStatement helps us replace the '?' marks in the query with proper values
+			PreparedStatement prepStmt = conn.prepareStatement(query);
+			prepStmt.setString(1, name);			// replace 1st question mark with name
+			prepStmt.setDouble(2, price);			// replace 2nd question mark with price
+			prepStmt.setInt(3, quantity);			// replace 3rd question mark with quantity
+
+			prepStmt.setInt(4,  id);				// replace the 4th '?' with id (where clause)
+			prepStmt.executeUpdate();
+		}
+		catch (SQLException e) {}
+	}
+
 	public static void closeConnection()
 	{
 		try
@@ -131,5 +159,4 @@ public class DatabaseHelper
 		}
 		catch (SQLException e){}
 	}
-
 }

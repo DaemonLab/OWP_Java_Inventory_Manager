@@ -29,5 +29,9 @@ select * from InventoryTable;
 ```
 You will be able to see all the entries in the table which you can add on the `AddItemsScreen`. This was just to ensure our AddItemsScreen is working properly, in the next step we will allow viewing and editing the entries in our app itself.  
 
-### Step 4
+### Step 4 -- Allow viewing and editing database in another window
+We will create a `ViewEditScreen` class in this step which will display all the rows of the database into a JTable. The benefit of using a `JTable` is that it allows editing of cells in the table and hence for updating the database we can see if the user has changed value in a cell. We will not allow changing the id as it is Primary Key in the database. We will populate the database in another thread so that the app does not hang while the data is being loaded. Also, since JTable does not provide a good event handler for when cells have been edited, so we will use a custom `TableCellListener` which will call our `actionPerformed` whenever a cell has been edited. The code for TableCellListener is acquired from [an online source](https://tips4java.wordpress.com/2009/06/07/table-cell-listener). Since it is not our code, hence we will put it into another java package.  
+The code for `ViewEditScreen` has been thoroughly explained in the comments. We have also created a `WithdrawItemsScreen` which will be used to winthdraw items from inventory and print a receipt if required. We renamed `PRINT_ACTION_CMD` to `WITHDRAW_ACTION_CMD` as the later seems more appropriate. The backend code for WithdraItemsScreen will be completed in the next step. JTable and threads are introduced in this step, also update code for sql is used. Take your time to soak in all these concepts. Happy Coding! :)  
+
+### Step 5
 Coming Soon...
