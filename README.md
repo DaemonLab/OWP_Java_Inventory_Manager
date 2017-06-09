@@ -5,7 +5,7 @@ This is a Java tutorial which uses MySQL for database and Swing API for GUI. Thi
 Java is a cross-platform language, and hence this tutorial can be followed on any OS be it windows or linux. The Swing API provides a nice and simple way to create GUI for java applications. Also, MySQL is widely used database server and also provides a simple Java connector API to connect to databases from Java. Hence this database is chosen.  
   
 ## Navigating this tutorial
-We understand that many readers might not have familiarity with the `git` framework and hence we have added a guide to explain all the required commands to properly navigate this tutorial. Please have a look at it if you are not familiar with git. The guide is a pdf file named [Navigating_OWP_Java_Inventory_Manager.pdf](Navigating_OWP_Java_Inventory_Manager.pdf) present with this tutorial. Since this tutorial is at a very basic stage and doesn't have sufficient commits, the pdf describes the commands as per our another OWP, it will be edited to reflect this tutorial's commits once we have atleast 3-4 steps in this tutorial.  
+We understand that many readers might not have familiarity with the `git` framework and hence we have added a guide to explain all the required commands to properly navigate this tutorial. Please have a look at it if you are not familiar with git. The guide is a pdf file named [Navigating_OWP_Java_Inventory_Manager.pdf](Navigating_OWP_Java_Inventory_Manager.pdf) present with this tutorial.  
   
   
 ## Running the code
