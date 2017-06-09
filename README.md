@@ -17,7 +17,8 @@ We understand that many readers might not have familiarity with the `git` framew
 - Download this project or clone it using git and then open the project in Eclipse.
 - Build and run to see the output.  
   
-You can look at the screenshot, which will be uplaoded here when the tutorial will be complete, to get an idea of how the finished product will look like.  
+You can look at the following screenshot to get an idea of how the finished product will look like:  
+![Screenshot.png](Screenshot.png)  
   
 Although the code is being provided, a learner is expected to run the code and go through the stages of how it was made. And then try him/her self to make some other software or an extension of the provided software. If you make something derived/inspired from this code, you can let us know and we can provide a link to your repository in a separate section of this readme.  
 Very basic decription of each commit will be given in the file [Steps.md](Steps.md). Learners are expected to use google to learn the in-depth intricasies. These tutorials are meant to promote learning-via-coding.  
