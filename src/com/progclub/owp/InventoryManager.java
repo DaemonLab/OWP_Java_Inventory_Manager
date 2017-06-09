@@ -1,5 +1,7 @@
 package com.progclub.owp;
 
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
@@ -28,5 +30,27 @@ public class InventoryManager
 		DecimalFormat df = new DecimalFormat("#.##");
 		df.setRoundingMode(RoundingMode.HALF_UP);
 		return df.format(d);
+	}
+
+	public static void printReceipt(String[][] strMat, String strNet)
+	{
+		// Create a printerJob with our ReceiptPrinter class
+		PrinterJob job = PrinterJob.getPrinterJob();
+		ReceiptPrinter rpt = new ReceiptPrinter(strMat, strNet);
+		job.setPrintable(rpt);
+		// show the print dialog and let user say OK
+		boolean ok = job.printDialog();
+		if (ok)
+		{
+			// User pressed OK to print
+			try
+			{
+				job.print();
+			}
+			catch (PrinterException ex)
+			{
+				/* The job did not successfully complete */
+			}
+		}
 	}
 }

@@ -265,8 +265,31 @@ public class WithdrawItemsScreen extends JFrame implements ActionListener, Chang
 			}
 			if (cbPrint.isSelected())
 			{
-				// Add the printing code here
-				JOptionPane.showMessageDialog(null, "Printing code will be added later!");
+				// Print the receipt
+				// First get all the values to String matrix: 7 rows, 4 columns
+				String[][] strMat = new String[NUM_ITEM_ROWS][];
+				for(int i=0;i<NUM_ITEM_ROWS;++i)
+				{
+					strMat[i] = new String[4];
+					strMat[i][0] = (String) cbNames[i].getSelectedItem();
+					strMat[i][0] = strMat[i][0] == null ? "" : strMat[i][0];
+					if(!strMat[i][0].isEmpty())
+					{
+						// If the name is not empty then only populate other things
+						strMat[i][1] = InventoryManager.formatDouble((double) spRates[i].getValue());
+						strMat[i][2] = Integer.toString((int) spQuantities[i].getValue());
+						strMat[i][3] = lblPrices[i].getText();
+					}
+					else
+					{
+						// Populate other fields with empty strings (not null)
+						strMat[i][1] = "";
+						strMat[i][2] = "";
+						strMat[i][3] = "";
+					}
+				}
+				// Call our utility function to do the job
+				InventoryManager.printReceipt(strMat, lblTotalValue.getText());
 			}
 		}
 	}

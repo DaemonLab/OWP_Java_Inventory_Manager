@@ -54,7 +54,7 @@ public class ViewEditScreen extends JFrame implements ActionListener, Runnable
 		// us to update the database when required
 		new TableCellListener(table, this);
 		
-		// Since the database cam have a lot of entries, load all of them
+		// Since the database can have a lot of entries, load all of them
 		// in a separate thread
 		Thread th = new Thread(this);
 		th.start();		// Calls the 'run' method

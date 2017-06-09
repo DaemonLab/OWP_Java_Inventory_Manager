@@ -2,6 +2,7 @@ package com.progclub.owp;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,7 +24,8 @@ public class LoginPrompt extends JFrame implements ActionListener
 	private static final long serialVersionUID = -4323982503807550496L;
 	
 	// Need this fields in other functions hence declared outside constructor
-	JTextField txtUsername, txtPassword;
+	JTextField txtUsername;
+	JPasswordField txtPassword;
 
 	/**
 	 * Create the frame in the constructor.
@@ -79,7 +81,7 @@ public class LoginPrompt extends JFrame implements ActionListener
 		gbc_txtPassword.anchor = GridBagConstraints.WEST;
 		gbc_txtPassword.gridx = 3;
 		gbc_txtPassword.gridy = 2;
-		txtPassword = new JTextField();
+		txtPassword = new JPasswordField();
 		txtPassword.setColumns(10);
 		contentPane.add(txtPassword, gbc_txtPassword);
 		
@@ -101,7 +103,7 @@ public class LoginPrompt extends JFrame implements ActionListener
 	{
 		// Login Button Clicked. For now, we will just show messages
 		// Later on we will redirect the user to another window
-		if (DatabaseHelper.getConnection(txtUsername.getText(), txtPassword.getText()))
+		if (DatabaseHelper.getConnection(txtUsername.getText(), String.valueOf(txtPassword.getPassword())))
 			InventoryManager.loginSuccessful(this);
 		else
 			JOptionPane.showMessageDialog(null, "Login Failed! Check your credentials!!");
